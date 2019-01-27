@@ -1,7 +1,7 @@
 .app{
   margin: 10px auto;
   width: 500px;
-  padding: 20px;
+  padding: 20px 20px 20px;
   box-shadow:  0 2px 10px rgba(0, 0, 0, 0.15);
-
+  background-color: rgba(0, 0, 0, 0.05)
 }
