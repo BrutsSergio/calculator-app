@@ -3,7 +3,10 @@ import './app.css';
 import Input from './input';
 import Button from './button';
 
+
 class App extends Component {
+  
+
   render() {
     return (
       <div className="app">
@@ -13,7 +16,7 @@ class App extends Component {
         </div>
         <div className="row form-group">
             <Button block outline color="secondary">(</Button>
-            <Button block outline color="secondary">(</Button>
+            <Button block outline color="secondary">)</Button>
             <Button block outline color="secondary">%</Button>
             <Button block outline color="secondary">AC</Button>
         </div>

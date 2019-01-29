@@ -2,23 +2,32 @@ import React, { Component } from 'react';
 import './button.css';
 
 export default class Button extends Component {
+    constructor(props) {
+        super(props);  
+        this.state  = {
+            value: this.props.children,
+            color: this.props.color,
+            size: this.props.size,
+        };
+    }
+
     handleClick(e) {
       e.preventDefault();
-      console.log('this is:', this.props.children);
+      alert('A name button click: ' + this.state.value);
     }
-  
+    
     render() {
-  
+        
       let className = 'btn';
   
-      if (this.props.color && this.props.outline) {
-        className += ' btn-outline-' + this.props.color;
-      } else if(this.props.color) {
-        className += ' btn-' + this.props.color;
+      if (this.state.color && this.props.outline) {
+        className += ' btn-outline-' + this.state.color;
+      } else if(this.state.color) {
+        className += ' btn-' + this.state.color;
       };
   
-      if (this.props.size) {
-        className += ' btn-' + this.props.size;
+      if (this.state.size) {
+        className += ' btn-' + this.state.size;
       };
   
       if (this.props.block) {
