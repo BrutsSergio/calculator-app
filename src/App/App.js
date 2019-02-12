@@ -4,6 +4,8 @@ import './index.scss';
 import Button from '../Button';
 import * as math from 'mathjs';
 
+import backspace from '../backspace.svg';
+
 const arrayKey = ['1','2','3','4','5','6','7','8','9','0','-','+','/','*','(',')', '.'];
 
 class App extends Component {
@@ -17,6 +19,11 @@ class App extends Component {
 
    handleClick = (value) => {
       this.setState({inputValue:   [...this.state.inputValue, value]})
+   }
+
+   handleClickBackSpace= () => {
+    this.state.inputValue.pop();
+    this.setState({inputValue:   this.state.inputValue})
    }
 
    handleClickEqual = (value) => {
@@ -51,9 +58,9 @@ class App extends Component {
       }
     }
 
-    if(arrayKey.indexOf( String.fromCharCode( e.which ) ) > -1 ) {
-      console.log(String.fromCharCode( e.which ));
-      this.setState({inputValue:   [...this.state.inputValue, String.fromCharCode( e.which )]})
+    if(arrayKey.indexOf( String( e.key ) ) > -1 ) {
+      console.log(String( e.key ));
+      this.setState({inputValue:   [...this.state.inputValue, String( e.key )]})
     }
   }
   
@@ -80,7 +87,11 @@ class App extends Component {
         <div className="row form-group">
             <Button value="(" block outline color="secondary" onClick={this.handleClick} />
             <Button value=")" block outline color="secondary" onClick={this.handleClick}/>
-            <Button value="%" block outline color="secondary" onClick={this.handleClick}/>
+            <div className="col">
+              <button className='btn btn-outline-secondary btn-block' onClick={this.handleClickBackSpace}>
+                <img width="12px" height="12px" src={backspace} als=""/>
+              </button> 
+            </div>
             <Button value="AC" block outline color="secondary" onClick={this.handleClickAC}/>
         </div>
         <div className="row">
