@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 
 import './index.scss';
+import backspace from '../backspace.svg';
 
-export default class Button extends Component {
+export default class ButtonBackSpace extends Component {
 
-    handleClick = () => {
-      this.props.onClick(this.props.value)
+    handleClickBackSpace = () => {
+      this.props.onClick()
     }
-    
+
     render() {
         
       let className = 'btn';
@@ -29,8 +30,8 @@ export default class Button extends Component {
       return (
         <>
         <div className="col">
-          <button className={className} onClick={this.handleClick}>
-            {this.props.value}
+          <button className={className} onClick={this.handleClickBackSpace}>
+            <img width="12px" height="12px" src={backspace} alt="BackSpace"/>
           </button> 
         </div>
         </>

@@ -2,20 +2,12 @@ import React, { Component } from 'react';
 import './index.scss';
 
 
-export default class Input extends Component {
-    constructor(){
-      super();
-      this.state = {
-        inputValue: '0',
-        currentKey: ''
-      }
-    }
-    
+export default class Input extends Component {    
     render() {
-      const { inputValue, currentKey } = this.state;
+      const { inputValue } = this.props;
       return(
         <div className="row form-group">
-          <div className="inputdiv">{inputValue}{currentKey}</div>
+          <div className="inputdiv">{inputValue}</div>
         </div>
       );
     }
