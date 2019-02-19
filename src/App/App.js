@@ -22,8 +22,9 @@ class App extends Component {
    }
 
    handleClickBackSpace= () => {
-    this.state.inputValue.pop();
-    this.setState({inputValue:   this.state.inputValue})
+    this.setState({
+      inputValue: this.state.inputValue.slice(0, -1)
+    })
    }
 
    handleClickEqual = (value) => {
@@ -49,7 +50,7 @@ class App extends Component {
 
    handleKeyPress = (e) => {
     const {inputValue} = this.state;
-    if(e.keyCode === 27) {
+    if(e.key === 'Escape') {
       if (inputValue && inputValue.length) {
         this.setState({inputValue:   []})
         
@@ -82,7 +83,7 @@ class App extends Component {
       <div className="app">
         <h1 className="text-center">Calculator</h1>
         <div className="row form-group">
-          <div className="inputdiv">{inputValue}{currentKey}</div>
+          <div className="inputdiv">{inputValue}</div>
         </div>
         <div className="row form-group">
             <Button value="(" block outline color="secondary" onClick={this.handleClick} />
