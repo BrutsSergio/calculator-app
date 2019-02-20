@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import Context from '../context';
 
 import backspace from '../backspace.svg';
@@ -28,32 +29,25 @@ export default class Button extends Component {
     const {
       handleClickBackSpace
     } = this.context;
-      
-    let className = 'btn';
 
-    if (color && outline) {
-      className += ' btn-outline-' + color;
-    } else if(color) {
-      className += ' btn-' + color;
-    };
-
-    if (size) {
-      className += ' btn-' + size;
-    };
-
-    if (block) {
-      className += ' btn-block';
-    };
+    let btnClass = classNames({
+      btn: true,
+      [`btn-outline-${color}`] : color && outline,
+      [`btn-${color}`] : color && !outline,
+      [`btn-${size}`] : size,
+      [`btn-block`] : block
+    });
 
     return (
       <>
       <div className="col">
         {isBackSpace ? (
-          <button className={className} onClick={handleClickBackSpace}>
+          
+          <button className={btnClass} onClick={handleClickBackSpace}>
             <img width="12px" height="12px" src={backspace} alt="BackSpace"/>
           </button>
         ) : (
-          <button className={className} onClick={isEqual ? (this.context.handleClickEqual) :isAc ? (this.context.handleClickAC) : (this.handleClick)}>
+          <button className={btnClass} onClick={isEqual ? (this.context.handleClickEqual) :isAc ? (this.context.handleClickAC) : (this.handleClick)}>
             {value}
           </button> 
         )}
