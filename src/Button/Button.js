@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 
+import backspace from '../backspace.svg';
+
 import './index.scss';
 
 export default class Button extends Component {
+
+    handleClickBackSpace = () => {
+      this.props.onClick()
+    }
 
     handleClick = () => {
       this.props.onClick(this.props.value)
@@ -25,13 +31,22 @@ export default class Button extends Component {
       if (this.props.block) {
         className += ' btn-block';
       };
+
+      const isBackSpace = this.props.isBackSpace;
   
       return (
         <>
         <div className="col">
-          <button className={className} onClick={this.handleClick}>
-            {this.props.value}
-          </button> 
+          {isBackSpace ? (
+            
+            <button className={className} onClick={this.handleClickBackSpace}>
+            <img width="12px" height="12px" src={backspace} alt="BackSpace"/>
+          </button>
+          ) : (
+            <button className={className} onClick={this.handleClick}>
+              {this.props.value}
+            </button> 
+          )}
         </div>
         </>
       );

@@ -3,7 +3,6 @@ import * as math from 'mathjs';
 
 import Input from '../Input';
 import Button from '../Button';
-import ButtonBackSpace from '../ButtonBackSpace';
 
 import './index.scss';
 
@@ -84,7 +83,7 @@ class App extends Component {
         <div className="row form-group">
             <Button value="(" block outline color="secondary" onClick={this.handleClick} />
             <Button value=")" block outline color="secondary" onClick={this.handleClick}/>
-            <ButtonBackSpace block outline color="secondary" onClick={this.handleClickBackSpace} />
+            <Button isBackSpace block outline color="secondary" onClick={this.handleClickBackSpace} />
             <Button value="AC" block outline color="secondary" onClick={this.handleClickAC}/>
         </div>
 
