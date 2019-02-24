@@ -40,20 +40,26 @@ export default class Manager extends Component {
   }
 
   handleClick = (value) => {
-    console.log('handleClick', {...this.state.inputValue});
-    this.setState({inputValue:   [...this.state.inputValue, value]})
+    //console.log('handleClick', {...this.state.inputValue});
+    const newArr = [...this.state.inputValue, value];
+    
+    this.setState({
+      inputValue:   newArr
+    })
   }
 
   handleClickBackSpace= () => {
-    console.log('handleClickBackSpace');
+    //console.log('handleClickBackSpace');
+    const newArr = this.state.inputValue.slice(0, -1);
+
     this.setState({
-      inputValue: this.state.inputValue.slice(0, -1)
+      inputValue: newArr
     })
   }
 
   handleClickEqual = () => {
-    console.log('handleClickEqual');
-    let mathExpression = this.state.inputValue.join('');
+    //console.log('handleClickEqual');
+    const mathExpression = this.state.inputValue.join('');
 
     this.setState({
       inputValue: [math.eval(mathExpression)]
@@ -61,31 +67,32 @@ export default class Manager extends Component {
   }
 
   handleClickAC = () => {
-    console.log('handleClickAC');
+    //console.log('handleClickAC');
     const {inputValue} = this.state;
+    const newArr = [];
+
     if (inputValue && inputValue.length) {
-      this.setState({inputValue:   []})
+      this.setState({inputValue:   newArr})
     } else{
       alert('Insert Data');
     }
-  
   }
 
-  handleKeyPress = (e) => {
+  handleKeyPress = (key) => {
     console.log('handleKeyPress');
     const {inputValue} = this.state;
-    if(e.key === 'Escape') {
+    if(key === 'Escape') {
       if (inputValue && inputValue.length) {
         this.setState({inputValue:   []})
       } else{
         alert('Insert Data');
       }
-    } else if(e.key === 'Backspace') {
+    } else if(key === 'Backspace') {
       this.handleClickBackSpace();
     }
 
-    if(arrayKey.indexOf( String( e.key ) ) > -1 ) {
-      this.setState({inputValue:   [...this.state.inputValue, String( e.key )]})
+    if(arrayKey.indexOf( String( key ) ) > -1 ) {
+      this.setState({inputValue:   [...this.state.inputValue, String( key )]})
     }
   }
 }

@@ -3,7 +3,6 @@ import Context from '../context';
 
 import './index.scss';
 
-
 export default class Input extends Component {   
   
     static contextType = Context;
